@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Navigation from '@/components/Navigation'
+import { EditModeProvider } from '@/components/EditModeContext'
 
 export const metadata: Metadata = {
   title: 'Cyrus Eslahi — Builder & Student',
@@ -15,8 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased bg-[#F5F5F7] text-[#050608]">
-        <Navigation />
-        {children}
+        <EditModeProvider>
+          <Navigation />
+          {children}
+        </EditModeProvider>
       </body>
     </html>
   )
