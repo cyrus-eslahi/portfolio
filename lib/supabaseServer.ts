@@ -1,18 +1,16 @@
 import { createClient } from '@supabase/supabase-js'
 
+const supabaseUrl = 'https://wqdcvzbfgpmzvnllrtef.supabase.co'
+
 export function createSupabaseClient() {
-  const supabaseUrl = process.env.SUPABASE_URL
-  const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+  // Try SUPABASE_SERVICE_ROLE_KEY first (recommended for server-side), fallback to SUPABASE_KEY
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_KEY
 
-  if (!supabaseUrl) {
-    throw new Error('Missing SUPABASE_URL environment variable')
+  if (!supabaseKey) {
+    throw new Error('Missing SUPABASE_SERVICE_ROLE_KEY or SUPABASE_KEY environment variable')
   }
 
-  if (!supabaseServiceRoleKey) {
-    throw new Error('Missing SUPABASE_SERVICE_ROLE_KEY environment variable')
-  }
-
-  return createClient(supabaseUrl, supabaseServiceRoleKey, {
+  return createClient(supabaseUrl, supabaseKey, {
     auth: {
       autoRefreshToken: false,
       persistSession: false,
