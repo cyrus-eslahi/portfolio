@@ -25,46 +25,70 @@ export async function getSiteContent(
     return {}
   }
 
-  const supabase = createSupabaseClient()
-
-  const { data, error } = await supabase
-    .from('site_content')
-    .select('key, value')
-    .in('key', keys)
-
-  if (error) {
-    throw new Error(`Failed to fetch site content: ${error.message}`)
+  // Check if Supabase is configured
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_KEY
+  if (!supabaseKey) {
+    // Return empty object if not configured (will use defaults)
+    return {}
   }
 
-  const result: Record<string, string> = {}
+  try {
+    const supabase = createSupabaseClient()
 
-  // Initialize all keys with empty strings
-  for (const key of keys) {
-    result[key] = ''
-  }
+    const { data, error } = await supabase
+      .from('site_content')
+      .select('key, value')
+      .in('key', keys)
 
-  // Fill in values from database
-  if (data) {
-    for (const row of data) {
-      result[row.key] = row.value || ''
+    if (error) {
+      console.error('Failed to fetch site content:', error.message)
+      return {}
     }
-  }
 
-  return result
+    const result: Record<string, string> = {}
+
+    // Initialize all keys with empty strings
+    for (const key of keys) {
+      result[key] = ''
+    }
+
+    // Fill in values from database
+    if (data) {
+      for (const row of data) {
+        result[row.key] = row.value || ''
+      }
+    }
+
+    return result
+  } catch (error) {
+    console.error('Error fetching site content:', error)
+    return {}
+  }
 }
 
 export async function upsertSiteContent(
   key: string,
   value: string
 ): Promise<void> {
-  const supabase = createSupabaseClient()
+  // Check if Supabase is configured
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_KEY
+  if (!supabaseKey) {
+    throw new Error('Supabase is not configured. Please set SUPABASE_SERVICE_ROLE_KEY or SUPABASE_KEY environment variable.')
+  }
 
-  const { error } = await supabase
-    .from('site_content')
-    .upsert({ key, value }, { onConflict: 'key' })
+  try {
+    const supabase = createSupabaseClient()
 
-  if (error) {
-    throw new Error(`Failed to upsert site content: ${error.message}`)
+    const { error } = await supabase
+      .from('site_content')
+      .upsert({ key, value }, { onConflict: 'key' })
+
+    if (error) {
+      throw new Error(`Failed to upsert site content: ${error.message}`)
+    }
+  } catch (error) {
+    console.error('Error upserting site content:', error)
+    throw error
   }
 }
 
