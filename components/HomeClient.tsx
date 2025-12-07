@@ -64,7 +64,7 @@ export default function HomeClient({ content }: HomeClientProps) {
                     </p>
                     <EditableText
                       id="hero_latest_build"
-                      initialValue={content.hero_latest_build || 'AI Study Coach'}
+                      initialValue={content.hero_latest_build || 'AI Camera Tracker'}
                       as="p"
                       className="text-lg font-semibold"
                     />
@@ -116,7 +116,7 @@ export default function HomeClient({ content }: HomeClientProps) {
                 <div className="flex items-center gap-2">
                   <EditableText
                     id="project1_tag1"
-                    initialValue={content.project1_tag1 || 'Web'}
+                    initialValue={content.project1_tag1 || 'Machine Learning (ML)'}
                     as="span"
                     className="px-3 py-1 bg-[#007AFF]/10 text-[#007AFF] text-xs font-medium rounded-full inline-block"
                   />
@@ -129,13 +129,13 @@ export default function HomeClient({ content }: HomeClientProps) {
                 </div>
                 <EditableText
                   id="project1_title"
-                  initialValue={content.project1_title || 'WhisperNotes'}
+                  initialValue={content.project1_title || 'AI Camera Tracker'}
                   as="h3"
                   className="text-xl font-semibold"
                 />
                 <EditableText
                   id="project1_description"
-                  initialValue={content.project1_description || 'An AI-powered note-taking app that transcribes and organizes your thoughts in real-time.'}
+                  initialValue={content.project1_description || 'An AI-powered tracker that follows your face in real-time and detects your expressions and objects in the background.'}
                   as="p"
                   className="text-[#050608]/70"
                   multiline
@@ -149,20 +149,20 @@ export default function HomeClient({ content }: HomeClientProps) {
                 <div className="flex items-center gap-2">
                   <EditableText
                     id="project2_tag1"
-                    initialValue={content.project2_tag1 || 'Web'}
+                    initialValue={content.project2_tag1 || 'Virus'}
                     as="span"
                     className="px-3 py-1 bg-[#007AFF]/10 text-[#007AFF] text-xs font-medium rounded-full inline-block"
                   />
                 </div>
                 <EditableText
                   id="project2_title"
-                  initialValue={content.project2_title || 'FocusGrid'}
+                  initialValue={content.project2_title || 'Computer Blocker'}
                   as="h3"
                   className="text-xl font-semibold"
                 />
                 <EditableText
                   id="project2_description"
-                  initialValue={content.project2_description || 'A minimalist productivity dashboard that helps you stay focused on what matters most.'}
+                  initialValue={content.project2_description || 'An app that block your computer from being used, only way out is if you put the password in.'}
                   as="p"
                   className="text-[#050608]/70"
                   multiline
@@ -273,12 +273,10 @@ export default function HomeClient({ content }: HomeClientProps) {
               <h2 className="text-3xl sm:text-4xl font-bold">About Cyrus</h2>
               <div className="space-y-4 text-lg text-[#050608]/80 leading-relaxed">
                 <p>
-                  I'm a junior high student passionate about coding, AI, and building things that matter. 
-                  I love turning ideas into reality through clean code and thoughtful design.
+                  I'm a junior high student that loves to code and build things, from simple websites to complex AI tools and hardware projects.
                 </p>
                 <p>
-                  Whether it's a web app, an AI tool, or a hardware project, I approach each build with 
-                  curiosity and a focus on creating something both functional and beautiful.
+                  Whether its just for fun or to help me learn, I love to build things and see them come to life.
                 </p>
               </div>
             </div>
@@ -320,7 +318,7 @@ export default function HomeClient({ content }: HomeClientProps) {
           <div className="space-y-4">
             <h2 className="text-3xl sm:text-4xl font-bold">Let's build something</h2>
             <p className="text-lg text-[#050608]/70">
-              For collaborations, ideas, or questions, reach out anytime.
+              For collaborations, ideas, or questions, reach out anytime. I build and program things and would love to help you build yours.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
