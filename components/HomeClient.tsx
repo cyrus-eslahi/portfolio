@@ -45,12 +45,12 @@ export default function HomeClient({ content }: HomeClientProps) {
                 >
                   View projects
                 </Link>
-                <a
-                  href="/Cyrus-Eslahi-Resume.pdf"
+                <Link
+                  href="/resume"
                   className="px-6 py-3 bg-transparent border border-[#D0D3DA] text-[#050608] rounded-full font-medium hover:bg-[#050608]/5 transition-all duration-200 text-center"
                 >
-                  Download resume
-                </a>
+                  View resume
+                </Link>
               </div>
             </div>
 
